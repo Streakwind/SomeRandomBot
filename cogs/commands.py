@@ -67,19 +67,29 @@ class Commands(commands.Cog):
                 
                 embed.add_field(name="User joined at", value=f"{time_1} ago", inline=True)
             else:
-                embed.description += f"This user ({member}) is not in the guild"
+                embed.description += f"\nThis user ({member}) is not in the guild"
         
         if member.bot:
-            embed.description += "This user is a bot"
+            embed.description += "\nThis user is a bot"
             
         if ctx.guild:     
             if member.id == ctx.guild.owner.id:
                 embed.description += f"\nThis user owns this server ({ctx.guild.name})"
         if member.id == self.bot.owner_id:
-            embed.description += "This user owns the bot"
+            embed.description += "\nThis user owns the bot"
             
         await ctx.send(embed = embed)
     
+    @commands.command()
+    async def avatar(self, ctx, *, user: discord.User = None):
+        """Shows you a specific users avatar"""
+
+        if not user:
+            user = ctx.author
+
+        embed = discord.Embed(title=user, description="", color=discord.Color.blue())
+        embed.set_thumbnail(url=user.avatar_url)
+
     @commands.command()
     async def uptime(self, ctx):
         uptime_before = datetime.datetime.utcnow() - self.bot.uptime
