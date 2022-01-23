@@ -46,6 +46,11 @@ class Commands(commands.Cog):
         ping = int(ping)
         await ctx.send(f"My ping is {ping}ms")
     
+    @commands.command()
+    async def source(self, ctx):
+        """Source code"""
+        await ctx.send("<https://github.com/Streakwind/SomeRandomBot>")
+        
     @commands.command(aliases = ["ui"])
     async def userinfo(self, ctx, *, member: discord.Member = None):
         """Information about a certain user"""
