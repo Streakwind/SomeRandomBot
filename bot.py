@@ -19,7 +19,7 @@ initial_extensions = (
     'cogs.music',
 )
 
-class CherryCrestBot (commands.Bot):
+class SomeRandomBot (commands.Bot):
     def __init__(self):
         self.uptime=datetime.datetime.utcnow()
         
@@ -77,7 +77,7 @@ class CherryCrestBot (commands.Bot):
         if message.content.startswith('hello'):
             await message.channel.send('hello')
     
-bot = CherryCrestBot()
+bot = SomeRandomBot()
 
 bot.help_command = commands.MinimalHelpCommand()
 
